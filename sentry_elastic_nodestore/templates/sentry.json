@@ -1,0 +1,18 @@
+{
+  "template": "sentry-*",
+  "mappings": {
+    "company": {
+      "dynamic": "strict",
+      "_all": {
+        "enabled": false
+      },
+
+      "properties": {
+        "data": {
+          "type": "text",
+          "index": false
+        }
+      }
+    }
+  }
+}
