@@ -52,7 +52,7 @@ class ElasticNodeStorage(NodeStorage):
             raise InvalidConfiguration('Can not connect to elasticsearch')
 
         try:
-            ret = self.es.indices.get_template(name=self.template_name)
+            self.es.indices.get_template(name=self.template_name)
             self._template_found = True
         except NotFoundError:
             logger.error(self.template_not_found_msg)
