@@ -21,7 +21,7 @@ Set ``SENTRY_NODESTORE`` at Your ``sentry.conf.py``
 .. code-block:: python
 
     from elasticsearch import Elasticsearch
-    es = Elasticsearch(['127.0.0.:9200'])
+    es = Elasticsearch(['127.0.0.1:9200'])
     SENTRY_NODESTORE = 'sentry_elastic_nodestore.ElasticNodeStorage'
     SENTRY_NODESTORE_OPTIONS = {
         'es': es,
