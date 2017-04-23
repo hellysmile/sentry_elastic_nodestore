@@ -16,7 +16,7 @@ Installation
 Configuration
 -------------
 
-Set `SENTRY_NODESTORE` at Your `sentry.conf.py`
+Set ``SENTRY_NODESTORE`` at Your ``sentry.conf.py``
 
 .. code-block:: python
 
@@ -26,6 +26,11 @@ Set `SENTRY_NODESTORE` at Your `sentry.conf.py`
     SENTRY_NODESTORE_OPTIONS = {
         'es': es,
     }
+
+    from sentry.conf.server import *  # default for sentry.conf.py
+    INSTALLED_APPS = list(INSTALLED_APPS)
+    INSTALLED_APPS.append('sentry_elastic_nodestore')
+    INSTALLED_APPS = tuple(INSTALLED_APPS)
 
 Usage
 -----
