@@ -3,7 +3,6 @@ import io
 import json
 from optparse import make_option
 
-from elasticsearch import TransportError
 from django.core.management.base import BaseCommand, CommandError
 from sentry.app import nodestore
 from sentry.utils.functional import extract_lazy_object
@@ -35,12 +34,6 @@ class Command(BaseCommand):
         with io.open(template, mode='rt', encoding=nodestore.encoding) as fp:
             template = json.load(fp)
 
-        try:
-            nodestore.put_template(template)
-        except TransportError as exc:
-            if exc.info.get('error', {}).get('reason') == 'index_template [sentry] already exists':
-                raise CommandError('Template already exists')
-
-            raise
+        nodestore.put_template(template)
 
         self.stdout.write('Successfully created elastic template')
