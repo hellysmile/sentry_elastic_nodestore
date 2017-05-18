@@ -25,6 +25,7 @@ Set ``SENTRY_NODESTORE`` at Your ``sentry.conf.py``
     SENTRY_NODESTORE = 'sentry_elastic_nodestore.ElasticNodeStorage'
     SENTRY_NODESTORE_OPTIONS = {
         'es': es,
+        'refresh': False,  # https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-refresh.html
     }
 
     from sentry.conf.server import *  # default for sentry.conf.py
